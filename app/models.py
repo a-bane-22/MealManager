@@ -28,3 +28,8 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+class Ingredient(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fdc_id = db.Column(db.Integer, index=True)
