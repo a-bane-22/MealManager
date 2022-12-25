@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="container p-3 my-3 border">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of Instructions</th>
+                        <th>Delete Recipe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for recipe in recipes %}
+                    <tr>
+                        <td><a href="{{ url_for('recipe.view_recipe', recipe_id=recipe.id) }}">{{ recipe.name }}</a></td>
+                        <td>{{ recipe.num_instructions }}</td>
+                        <td><a href="{{ url_for('recipe.delete_recipe', recipe_id=recipe.id) }}" class="btn btn-danger" role="button">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

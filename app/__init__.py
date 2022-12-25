@@ -23,9 +23,15 @@ def create_app(config_class=Config):
     
     from app.authentication import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/authentication')
+
+    from app.ingredient import bp as ingredient_bp
+    app.register_blueprint(ingredient_bp)
     
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from app.recipe import bp as recipe_bp
+    app.register_blueprint(recipe_bp)
 
     return app
 

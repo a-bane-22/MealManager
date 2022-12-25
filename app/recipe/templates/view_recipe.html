@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="container p-3 my-3 border">
+        <h1>{{ recipe.name }}</h1>
+        <div class="container p-3 my-3 border">
+            <h2>Recipe Tools</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ url_for('recipe.add_recipe_ingredient', recipe_id=recipe.id) }}" class="btn btn-primary" role="button">Add Ingredient</a>
+                    <a href="{{ url_for('recipe.add_instruction', recipe_id=recipe.id) }}" class="btn btn-primary" role="button">Add Instruction</a>
+                    <a href="{{ url_for('recipe.delete_recipe', recipe_id=recipe.id) }}" class="btn btn-danger" role="button">Delete Recipe</a>
+                </div>
+            </div>
+        </div>
+        <div class="container p-3 my-3 border">
+            <h2>Nutrition Info</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <p><b>Calories - {{ recipe.get_calories() }}</b></p>
+                </div>
+                <div class="col-md-3">
+                    <p><b>Carbs - {{ recipe.get_carbs() }}</b></p>
+                </div>
+                <div class="col-md-3">
+                    <p><b>Fat - {{ recipe.get_fat() }}</b></p>
+                </div>
+                <div class="col-md-3">
+                    <p><b>Protein - {{ recipe.get_protein() }}</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="container p-3 my-3 border">
+            <h2>Ingredients</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <ol>
+                        {% for recipe_ingredient in recipe.ingredients %}
+                            <li>{{ recipe_ingredient.get_description() }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="container p-3 my-3 border">
+            <h2>Instructions</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <ol>
+                        {% for recipe_instruction in recipe.instructions %}
+                            <li>{{ recipe_instruction.instruction }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>`
+        </div>
+    </div>
+{% endblock %}

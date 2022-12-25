@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="container p-3 my-3 border">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ ingredient.name }}</h1>
+                <h2>Nutrition Facts for 100g</h2>
+                <p><b>Calories - {{ ingredient.calories }}kCal</b></p>
+                <p><b>Carbs - {{ ingredient.carbs }}g</b></p>
+                <p><b>Fat - {{ ingredient.fat }}g</b></p>
+                <p><b>Protein - {{ ingredient.protein }}g</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Recipes</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity (g)</th>
+                                <th>Calories (kCal)</th>
+                                <th>Carbs (g)</th>
+                                <th>Fat (g)</th>
+                                <th>Protein (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for ingredient_recipe in ingredient.recipes %}
+                            <td><a href="{{ url_for('recipe.view_recipe', recipe_id=ingredient_recipe.recipe_id) }}">{{ ingredient_recipe.get_name() }}</a></td>
+                            <td>{{ ingredient_recipe.quantity }}</td>
+                            <td>{{ ingredient_recipe.get_calories() }}</td>
+                            <td>{{ ingredient_recipe.get_carbs() }}</td>
+                            <td>{{ ingredient_recipe.get_fat() }}</td>
+                            <td>{{ ingredient_recipe.get_protein() }}</td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
