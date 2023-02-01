@@ -4,21 +4,38 @@
     <h1>User: {{ user.username }}</h1>
     <div class="row">
         <div class="col-md-4">
-
+            <a href="{{ url_for('main.edit_user', user_id=user.id) }}" class="btn btn-primary" role="button">Edit User</a>
         </div>
     </div>
     <div>
         <h2>User Information</h2>
-        <table class="table">
-            <tr>
-                <td><b>Name: </b>{{ user.get_name() }}</td>
-            </tr>
-            <tr>
-                <td><b>Email Address: </b>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td><b>Phone: </b>{{ user.phone }}</td>
-            </tr>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <td><b>Name: </b>{{ user.get_name() }}</td>
+                </tr>
+                <tr>
+                    <td><b>Email Address: </b>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td><b>Phone: </b>{{ user.phone }}</td>
+                </tr>
+                <tr>
+                    <td><b>Weight: </b>{{ user.weight }} <b>kg</b></td>
+                </tr>
+                <tr>
+                    <td><b>Height: </b>{{ user.height }} <b>cm</b></td>
+                </tr>
+                <tr>
+                    <td><b>Body Fat Percentage: </b>{{ user.body_fat_percentage }}%</td>
+                </tr>
+                <tr>
+                    <td><b>Activity Level: </b>{{ user.get_activity_level_description() }}</td>
+                </tr>
+                <tr>
+                    <td><b>Daily Caloric Need: </b>{{ user.get_mifflin_st_jeor_daily_calories() }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 {% endblock %}

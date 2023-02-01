@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                         {% for ingredient_recipe in ingredient.recipes %}
-                            <td><a href="{{ url_for('recipe.view_recipe', recipe_id=ingredient_recipe.recipe_id) }}">{{ ingredient_recipe.get_name() }}</a></td>
+                            <td><a href="{{ url_for('recipe.view_recipe', recipe_id=ingredient_recipe.recipe_id) }}">{{ ingredient_recipe.get_recipe_name() }}</a></td>
                             <td>{{ ingredient_recipe.quantity }}</td>
                             <td>{{ ingredient_recipe.get_calories() }}</td>
                             <td>{{ ingredient_recipe.get_carbs() }}</td>
